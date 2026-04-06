@@ -218,7 +218,7 @@ router.post(
 </svg>`;
 
     const filename = `badge-${Date.now()}.svg`;
-    const badgeFilePath = path.join(__dirname, "../uploads/badges", filename);
+    const badgeFilePath = path.join(__dirname, "../uploads/bd.jpeg"),
     fs.writeFileSync(badgeFilePath, svgContent, "utf8");
     const imagePath = `/uploads/badges/${filename}`;
 
@@ -239,7 +239,7 @@ router.post(
     res.json({
       id: result.insertId,
       image_path: imagePath,
-      download_url: `http://localhost:5000${imagePath}`,
+      download_url: `${process.env.BACKEND_URL || "https://paulhounkpebackend-wmrarpee.b4a.run"}${imagePath}`,
     });
   },
 );
