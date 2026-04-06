@@ -218,10 +218,9 @@ router.post(
 </svg>`;
 
     const filename = `badge-${Date.now()}.svg`;
-    const badgeFilePath = path.join(__dirname, "../uploads/bd.jpeg"),
+    const badgeFilePath = path.join(__dirname, "../uploads/badges", filename);
     fs.writeFileSync(badgeFilePath, svgContent, "utf8");
     const imagePath = `/uploads/badges/${filename}`;
-
     const [result] = await db.query(
       "INSERT INTO badges (full_name, whatsapp, region, commune, intention, photo, message, image_path) VALUES (?,?,?,?,?,?,?,?)",
       [
